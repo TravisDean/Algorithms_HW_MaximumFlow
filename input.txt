@@ -1,14 +1,14 @@
 9 3 2
-Alice CS 2102
-Alice CS 3102
-Alice CS 4102
-Bob CS 2102
-Bob CS 3102
-Charlie CS 2102
-Charlie CS 4102
-David CS 2102
-David CS 3102
-CS 2102 3
-CS 3102 3
-CS 4102 3
+Alice CS_2102
+Alice CS_3102
+Alice CS_4102
+Bob CS_2102
+Bob CS_3102
+Charlie CS_2102
+Charlie CS_4102
+David CS_2102
+David CS_3102
+CS_2102 3
+CS_3102 3
+CS_4102 3
 0 0 0
