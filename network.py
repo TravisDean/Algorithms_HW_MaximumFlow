@@ -3,12 +3,11 @@ __author__ = 'Travis'
 class Node(object):
     def __init__(self, name, demand=0):
         self.name = name
-        self.demand = demand
         self.inc = []
         self.out = []
 
     def __str__(self):
-        return str(self.name) + ": " + str(self.demand)
+        return str(self.name)
 
 
 class Edge(object):
@@ -67,6 +66,11 @@ class Graph(object):
             path = self.findPath(f, t)
         return sum(e.flow for e in f.out)
 
+    def outflowSource(self):
+        outflow = sum([e.flow for e in self.source.out])
+        outcap = sum([e.capacity for e in self.source.out])
+        return outflow is outcap
+
     def __str__(self):
         s = ""
         for n in self.nodes:
@@ -76,23 +80,19 @@ class Graph(object):
         return s
 
 
-
-g = Graph()
-nodes = [Node(c) for c in "SUVT"]
-s, u, v, t = nodes
-g.connect(s, u, 20)
-g.connect(s, v, 10)
-g.connect(u, v, 30)
-g.connect(u, t, 10)
-g.connect(v, t, 20)
-g.source = s
-g.terminus = t
-print(str(g))
-
-path = g.findPath(s, t)
-for p in path:
-    print(str(p))
-maxflow = g.maxFlow(s, t)
-print(str(maxflow))
-print (str(g))
-# print(str(p))
+if __name__ == "__main__":
+    g = Graph()
+    nodes = [Node(c) for c in "SUVT"]
+    s, u, v, t = nodes
+    g.connect(s, u, 25)
+    g.connect(s, v, 10)
+    g.connect(u, v, 30)
+    g.connect(u, t, 10)
+    g.connect(v, t, 20)
+    g.source = s
+    g.terminus = t
+    print(str(g))
+    maxflow = g.maxFlow(s, t)
+    print(str(maxflow))
+    print (str(g))
+    print("Feasible") if g.outflowSource() else print("Not feasible.")
