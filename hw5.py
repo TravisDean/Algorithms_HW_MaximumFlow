@@ -1,11 +1,8 @@
-import functools
 import sys
-import numpy as np
 from network import Graph, Edge, Node
 
 __author__ = 'Travis Dean'
-debug = True
-
+debug = False
 
 def makeGraph(requests, classes, numclasses):
     g = Graph()
@@ -26,8 +23,6 @@ def makeGraph(requests, classes, numclasses):
             g.connect(studentnode, courses[coursename], 1)
 
     g.maxFlow(s, t)
-    # print("Max flow: " + str(g.maxFlow(s, t)))
-    # print(str(g))
     return g
 
 def solve(requests, classes, numclasses):
@@ -38,11 +33,11 @@ def read_data(filename):
     with open(filename) as f:
         while True:
             registrations, courses, numclasses = [int(x) for x in f.readline().split()]
-            if (registrations is 0 and courses is 0 and numclasses is 0): return
+            if registrations is 0 and courses is 0 and numclasses is 0: return
             requests = {}
             for _ in range(registrations):
                 student, course = f.readline().split()
-                if (requests.get(student)):
+                if requests.get(student):
                     requests[student].append(course)
                 else:
                     requests[student] = [course]

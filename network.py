@@ -1,7 +1,7 @@
 __author__ = 'Travis'
 
 class Node(object):
-    def __init__(self, name, demand=0):
+    def __init__(self, name):
         self.name = name
         self.inc = []
         self.out = []
@@ -94,5 +94,5 @@ if __name__ == "__main__":
     print(str(g))
     maxflow = g.maxFlow(s, t)
     print(str(maxflow))
-    print (str(g))
+    print(str(g))
     print("Feasible") if g.outflowSource() else print("Not feasible.")
